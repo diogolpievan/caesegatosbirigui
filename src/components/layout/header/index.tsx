@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { NavItem } from "./nav-item";
+import NavItem from "./nav-item";
 
 const NAVIGATION_LINKS = [
   {
@@ -40,3 +40,5 @@ export const Header = () => {
     </header>
   )
 }
+
+export default Header;
