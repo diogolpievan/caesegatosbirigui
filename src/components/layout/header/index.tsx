@@ -9,7 +9,7 @@ const Header = () => {
             <Image 
               width={115}
               src="/logo.png"
-              alt="Logo Caes e Gatos Birigui"
+              alt="Logo Cães e Gatos Birigui"
             />
           </Link>
         </div>
