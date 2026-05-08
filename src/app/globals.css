@@ -2,20 +2,31 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #3f3f3f;
+  --primary: #51D1E0;
+  --secondary: #064F58;
+  --accent: #FF6589;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-paytone-one: var(--font-paytone-one);
+  --font-montserrat: var(--font-montserrat);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.title, h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-paytone-one), sans-serif;
+  color: var(--secondary);
 }
 
 .container {
