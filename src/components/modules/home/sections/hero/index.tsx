@@ -9,12 +9,12 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative bg-cover bg-center bg-no-repeat"
+      className="relative bg-cover bg-position-[center_25%] bg-no-repeat"
       style={{
         backgroundImage: "url('/images/caes-e-gatos-birigui-hero.png')",
       }}
     >
-      <div className="container flex min-h-screen flex-col justify-center pt-40 pb-32">
+      <div className="container flex min-h-[93vh] flex-col justify-center pt-40 pb-32">
         <div className="max-w-150">
           <h1 className="text-5xl leading-[1.1] md:text-6xl">
             Cuidando do Seu Pet Como se Fosse Nosso

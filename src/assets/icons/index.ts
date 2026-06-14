@@ -1,3 +1,7 @@
+import { ReactNode, SVGProps } from "react";
+
+export type IconComponent = (props: SVGProps<SVGSVGElement>) => ReactNode;
+
 export * from './certificate';
 export * from './clock';
 export * from './clock-calendar';
