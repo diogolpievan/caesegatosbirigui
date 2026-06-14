@@ -21,7 +21,7 @@ const NAVIGATION_LINKS = [
 
 export const Header = () => {
   return (
-    <header>
+    <header className="absolute inset-x-0 top-0 z-20">
         <div className="container flex items-center justify-between py-6">
           <Link href="/">
             <Image 

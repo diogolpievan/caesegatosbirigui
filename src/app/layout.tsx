@@ -28,9 +28,9 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${paytoneOne.variable} ${montserrat.variable} h-full antialiased`}
+      className={`${paytoneOne.variable} ${montserrat.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="relative min-h-full flex flex-col">
         <Header />
         {children}
       </body>
