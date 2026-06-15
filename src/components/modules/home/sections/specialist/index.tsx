@@ -59,7 +59,7 @@ export const Specialist = () => {
             width={614}
             height={861}
             sizes="(max-width: 1024px) 100vw, 40vw"
-            className="h-auto w-full self-start rounded-[40px]"
+            className="h-auto w-full self-end rounded-[40px]"
           />
 
           <div>
