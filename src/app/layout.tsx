@@ -30,7 +30,10 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${paytoneOne.variable} ${montserrat.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="relative min-h-full flex flex-col">
+      <body
+        className="relative min-h-full flex flex-col"
+        suppressHydrationWarning
+      >
         <Header />
         {children}
       </body>

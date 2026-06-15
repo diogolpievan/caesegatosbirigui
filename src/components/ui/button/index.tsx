@@ -9,6 +9,7 @@ type ButtonProps = {
   className?: string;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
+  iconPosition?: "left" | "right";
 } & (
   | { label: string; icon?: IconComponent }
   | { label?: string; icon: IconComponent }
@@ -17,6 +18,7 @@ type ButtonProps = {
 export const Button = ({
   label,
   icon: Icon,
+  iconPosition = "right",
   href,
   onClick,
   className = "",
@@ -33,10 +35,15 @@ export const Button = ({
     ${className}
   `;
 
+  const iconNode = Icon && (
+    <Icon className={isIconOnly ? "size-9" : "size-5"} />
+  );
+
   const content = (
     <>
+      {iconPosition === "left" && iconNode}
       {label && <span>{label}</span>}
-      {Icon && <Icon className={isIconOnly ? "size-9" : "size-5"} />}
+      {iconPosition === "right" && iconNode}
     </>
   );
 
