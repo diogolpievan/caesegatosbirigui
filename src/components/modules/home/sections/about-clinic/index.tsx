@@ -48,7 +48,7 @@ export const AboutClinic = () => {
               Centro Especializado em Dermatologia e Odontologia
             </h2>
 
-            <p className="mt-6 leading-relaxed text-foreground/80">
+            <p className="mt-6 text-justify leading-relaxed text-foreground/80">
               Nosso consultório conta com estrutura preparada para procedimentos
               dermatológicos e odontológicos, garantindo precisão diagnóstica e
               excelência nos tratamentos.

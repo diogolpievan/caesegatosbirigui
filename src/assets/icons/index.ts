@@ -3,6 +3,8 @@ import { ReactNode, SVGProps } from "react";
 export type IconComponent = (props: SVGProps<SVGSVGElement>) => ReactNode;
 
 export * from './certificate';
+export * from './dermatology';
+export * from './tooth';
 export * from './clock';
 export * from './clock-calendar';
 export * from './instagram';
