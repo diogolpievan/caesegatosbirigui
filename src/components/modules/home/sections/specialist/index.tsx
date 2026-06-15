@@ -1,19 +1,41 @@
 import Image from "next/image";
-import {
-  ClinicIcon,
-  IdCardIcon,
-  PawIcon,
-  StethoscopeIcon,
-} from "@/assets/icons";
+import { IdCardIcon, PawIcon, StethoscopeIcon } from "@/assets/icons";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { CredentialBadge } from "./credential-badge";
 import { ScheduleCard } from "./schedule-card";
 import { ContactCard } from "./contact-card";
 
 const CREDENTIALS = [
-  { icon: StethoscopeIcon, label: "Veterinária Especialista" },
-  { icon: IdCardIcon, label: "CRMV-SP 39275" },
-  { icon: ClinicIcon, label: "Fundadora da Cães e Gatos" },
+  {
+    id: "vet",
+    icon: StethoscopeIcon,
+    label: (
+      <>
+        Veterinária
+        <br />
+        Especializada
+      </>
+    ),
+  },
+  {
+    id: "crmv",
+    icon: IdCardIcon,
+    label: "CRMV-SP 39275",
+  },
+  {
+    id: "founder",
+    image: {
+      src: "/images/logo-secundaria-caes-e-gatos-birigui.png",
+      alt: "Logo Cães e Gatos Birigui",
+    },
+    label: (
+      <>
+        Fundadora da
+        <br />
+        Cães e Gatos
+      </>
+    ),
+  },
 ];
 
 const SCHEDULE = [
@@ -30,16 +52,15 @@ export const Specialist = () => {
   return (
     <section id="specialist" className="py-20 lg:py-28">
       <div className="container">
-        <div className="grid items-stretch gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="relative min-h-100 overflow-hidden rounded-[40px]">
-            <Image
-              fill
-              src="/images/letusa-denise.png"
-              alt="Dra. Letusa Denise Silva Carobelli"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
+        <div className="grid items-stretch gap-12 lg:grid-cols-[4fr_6fr] lg:gap-16">
+          <Image
+            src="/images/letusa-denise.png"
+            alt="Dra. Letusa Denise Silva Carobelli"
+            width={614}
+            height={861}
+            sizes="(max-width: 1024px) 100vw, 40vw"
+            className="h-auto w-full self-start rounded-[40px]"
+          />
 
           <div>
             <SectionBadge icon={PawIcon} text="Especialista" />
@@ -48,9 +69,9 @@ export const Specialist = () => {
               Letusa Denise Silva Carobelli
             </h2>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              {CREDENTIALS.map(({ icon, label }) => (
-                <CredentialBadge key={label} icon={icon} label={label} />
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {CREDENTIALS.map(({ id, ...credential }) => (
+                <CredentialBadge key={id} {...credential} />
               ))}
             </div>
 

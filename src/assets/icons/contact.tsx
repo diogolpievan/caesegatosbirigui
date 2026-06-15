@@ -3,20 +3,35 @@ import { SVGProps } from "react";
 export const ContactIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
-      viewBox="0 0 24 24"
+      viewBox="0 0 28 28"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path d="M16 18a4 4 0 0 0-8 0" />
-      <circle cx="12" cy="11" r="3" />
-      <rect width="18" height="18" x="3" y="4" rx="2" />
-      <path d="M8 2v2" />
-      <path d="M16 2v2" />
+      <path
+        d="M19.565 1.75H8.435C7.20432 1.75 6.20667 2.74766 6.20667 3.97833V24.0217C6.20667 25.2523 7.20432 26.25 8.435 26.25H19.565C20.7957 26.25 21.7933 25.2523 21.7933 24.0217V3.97833C21.7933 2.74766 20.7957 1.75 19.565 1.75Z"
+        stroke="currentColor"
+        strokeWidth="1.91"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M6.20667 21.7932H21.7933"
+        stroke="currentColor"
+        strokeWidth="1.91"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M13.9999 11.7716C15.2306 11.7716 16.2283 10.7739 16.2283 9.54328C16.2283 8.3126 15.2306 7.31494 13.9999 7.31494C12.7693 7.31494 11.7716 8.3126 11.7716 9.54328C11.7716 10.7739 12.7693 11.7716 13.9999 11.7716Z"
+        stroke="currentColor"
+        strokeWidth="1.91"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M14 11.7717C14.4431 11.7717 14.8819 11.8599 15.2905 12.0312C15.6992 12.2025 16.0697 12.4535 16.3803 12.7695C16.6909 13.0856 16.9354 13.4603 17.0996 13.8719C17.2638 14.2835 17.3444 14.7237 17.3367 15.1667V16.3334H10.6634V15.1667C10.6556 14.7237 10.7362 14.2835 10.9004 13.8719C11.0646 13.4603 11.3092 13.0856 11.6198 12.7695C11.9304 12.4535 12.3008 12.2025 12.7095 12.0312C13.1182 11.8599 13.5569 11.7717 14 11.7717Z"
+        stroke="currentColor"
+        strokeWidth="1.91"
+        strokeMiterlimit="10"
+      />
     </svg>
   );
 };
