@@ -24,7 +24,7 @@ export const ScheduleCard = ({ title, items }: ScheduleCardProps) => {
         {items.map(({ day, hours }) => (
           <div
             key={day}
-            className="grid grid-cols-2 border-b border-white/25 py-3"
+            className="flex items-center justify-between border-b border-white/25 py-3"
           >
             <span>{day}</span>
             <span>{hours}</span>

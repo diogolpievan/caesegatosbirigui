@@ -14,13 +14,14 @@ export const ContactCard = ({ title }: ContactCardProps) => {
         <span className="font-paytone-one text-lg">{title}</span>
       </div>
 
-      <div className="mt-5 flex flex-col items-start gap-3">
+      <div className="mt-5 flex flex-col gap-3">
         <Button
           label="Whatsapp"
           icon={WhatsappIcon}
           iconPosition="left"
           iconClassName="size-9"
           href={WHATSAPP_HREF}
+          className="w-full"
         />
         <Button
           label="Instagram"
@@ -28,6 +29,7 @@ export const ContactCard = ({ title }: ContactCardProps) => {
           iconPosition="left"
           iconClassName="size-9"
           href={INSTAGRAM_HREF}
+          className="w-full"
         />
       </div>
     </div>
