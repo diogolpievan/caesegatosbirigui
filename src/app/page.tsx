@@ -1,6 +1,7 @@
 import Hero from "@/components/modules/home/sections/hero";
 import AboutClinic from "@/components/modules/home/sections/about-clinic";
 import Services from "@/components/modules/home/sections/services";
+import Specialist from "@/components/modules/home/sections/specialist";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <AboutClinic />
       <Services />
+      <Specialist />
     </>
   );
 }

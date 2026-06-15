@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NavItem from "./nav-item";
 import { Button } from "@/components/ui/button";
+import { WHATSAPP_HREF } from "@/constants/contact";
 
 const NAVIGATION_LINKS = [
   {
@@ -39,7 +40,7 @@ export const Header = () => {
             }
             <Button
             label="Fale Conosco"
-            href="https://wa.me/5518997611028?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+            href={WHATSAPP_HREF}
             />
           </nav>
         </div>
