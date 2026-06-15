@@ -18,4 +18,6 @@ export * from './microcospe';
 export * from './paw-circle';
 export * from './paw-plus';
 export * from './paw';
+export * from './quote';
+export * from './star';
 export * from './whatsapp';
