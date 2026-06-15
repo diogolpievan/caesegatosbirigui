@@ -95,7 +95,7 @@ export const Specialist = () => {
               ))}
             </ul>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:gap-x-24">
               <ScheduleCard title="Atendimento" items={SCHEDULE} />
               <ContactCard title="Contatos" />
             </div>
