@@ -1,16 +1,39 @@
+import Image from "next/image";
+import { ReactNode } from "react";
 import { IconComponent } from "@/assets/icons";
 
 type CredentialBadgeProps = {
-  icon: IconComponent;
-  label: string;
+  icon?: IconComponent;
+  image?: {
+    src: string;
+    alt: string;
+  };
+  label: ReactNode;
 };
 
-export const CredentialBadge = ({ icon: Icon, label }: CredentialBadgeProps) => {
+export const CredentialBadge = ({
+  icon: Icon,
+  image,
+  label,
+}: CredentialBadgeProps) => {
   return (
-    <span className="inline-flex items-center gap-2 rounded-2xl bg-primary/15 px-4 py-3 font-paytone-one text-sm text-secondary">
-      <Icon className="size-6 shrink-0 text-secondary" />
-      {label}
-    </span>
+    <div className="flex items-center gap-3 rounded-2xl bg-primary/10 p-4">
+      {Icon && <Icon className="size-8 shrink-0 text-secondary" />}
+
+      {image && (
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={32}
+          height={32}
+          className="size-8 shrink-0 object-contain"
+        />
+      )}
+
+      <span className="font-paytone-one text-sm leading-tight text-secondary">
+        {label}
+      </span>
+    </div>
   );
 };
 
