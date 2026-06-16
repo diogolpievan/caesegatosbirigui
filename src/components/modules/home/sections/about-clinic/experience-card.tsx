@@ -21,4 +21,3 @@ export const ExperienceCard = ({
   );
 };
 
-export default ExperienceCard;

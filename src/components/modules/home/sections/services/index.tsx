@@ -1,5 +1,5 @@
-import { DermatologyIcon, PawIcon, ToothIcon } from "@/assets/icons";
-import { SectionBadge } from "@/components/ui/section-badge";
+import { DermatologyIcon, ToothIcon } from "@/assets/icons";
+import { SectionHeader } from "@/components/ui/section-header";
 import { ServiceCard } from "./service-card";
 
 const SERVICES = [
@@ -50,13 +50,11 @@ export const Services = () => {
   return (
     <section id="services" className="bg-primary/20 py-20 lg:py-28">
       <div className="container">
-        <div className="flex flex-col items-center text-center">
-          <SectionBadge icon={PawIcon} text="Nossos Serviços" />
-
-          <h2 className="mt-5 max-w-2xl text-4xl leading-tight">
-            Cuidado Especializado Para a Saúde do Seu Pet
-          </h2>
-        </div>
+        <SectionHeader
+          align="center"
+          eyebrow="Nossos Serviços"
+          title="Cuidado Especializado Para a Saúde do Seu Pet"
+        />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
           {SERVICES.map(({ id, ...service }) => (
@@ -68,4 +66,3 @@ export const Services = () => {
   );
 };
 
-export default Services;

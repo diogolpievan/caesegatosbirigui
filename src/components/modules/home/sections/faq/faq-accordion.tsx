@@ -33,4 +33,3 @@ export const FaqAccordion = ({
   );
 };
 
-export default FaqAccordion;

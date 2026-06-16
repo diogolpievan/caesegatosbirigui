@@ -14,4 +14,3 @@ export const NavItem = ({label, href}: NavItemProps) => {
   }
 
 
-export default NavItem;

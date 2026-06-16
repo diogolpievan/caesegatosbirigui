@@ -16,4 +16,3 @@ export const FeatureCard = ({ icon: Icon, title }: FeatureCardProps) => {
   );
 };
 
-export default FeatureCard;

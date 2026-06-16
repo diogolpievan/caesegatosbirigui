@@ -1,21 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import NavItem from "./nav-item";
+import { NavItem } from "./nav-item";
 import { Button } from "@/components/ui/button";
 import { WHATSAPP_HREF } from "@/constants/contact";
 
 const NAVIGATION_LINKS = [
   {
-    label: 'Home', 
-    href: '/'
+    label: 'Home',
+    href: '#home'
   },
   {
     label: 'Sobre',
-    href: '/about'
+    href: '#about'
   },
   {
     label: 'Serviços',
-    href: '/services'
+    href: '#services'
   }
 ]
 
@@ -48,4 +48,3 @@ export const Header = () => {
   )
 }
 
-export default Header;

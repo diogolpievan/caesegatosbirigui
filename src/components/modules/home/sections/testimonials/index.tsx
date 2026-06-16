@@ -1,5 +1,4 @@
-import { PawIcon } from "@/assets/icons";
-import { SectionBadge } from "@/components/ui/section-badge";
+import { SectionHeader } from "@/components/ui/section-header";
 import { RatingOverviewCard } from "./rating-overview-card";
 import { TestimonialsCarousel } from "./testimonials-carousel";
 
@@ -30,13 +29,11 @@ export const Testimonials = () => {
   return (
     <section id="testimonials" className="bg-primary/20 py-20 lg:py-28">
       <div className="container">
-        <div className="flex flex-col items-center text-center">
-          <SectionBadge icon={PawIcon} text="Avaliações" />
-
-          <h2 className="mt-5 max-w-xl text-4xl leading-tight">
-            A Opinião de Quem Confia na Cães e Gatos
-          </h2>
-        </div>
+        <SectionHeader
+          align="center"
+          eyebrow="Avaliações"
+          title="A Opinião de Quem Confia na Cães e Gatos"
+        />
 
         <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-[0.3fr_1fr]">
           <RatingOverviewCard
@@ -52,4 +49,3 @@ export const Testimonials = () => {
   );
 };
 
-export default Testimonials;

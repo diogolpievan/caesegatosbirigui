@@ -72,4 +72,3 @@ export const TestimonialsCarousel = ({
   );
 };
 
-export default TestimonialsCarousel;

@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { ReactNode, SVGProps } from "react";
-
-type IconComponent = (props: SVGProps<SVGSVGElement>) => ReactNode;
+import { IconComponent } from "@/assets/icons";
 
 type ButtonProps = {
   href?: string;
@@ -51,7 +49,12 @@ export const Button = ({
 
   if (href) {
     return (
-      <Link href={href} className={baseStyles} target="_blank">
+      <Link
+        href={href}
+        className={baseStyles}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {content}
       </Link>
     );

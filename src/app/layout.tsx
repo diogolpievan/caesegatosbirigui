@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Paytone_One, Montserrat } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/header";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 const paytoneOne = Paytone_One({
   variable: "--font-paytone-one",
@@ -36,6 +37,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

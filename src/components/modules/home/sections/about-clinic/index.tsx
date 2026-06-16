@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { CertificateIcon, MicroscopeIcon, PawIcon } from "@/assets/icons";
-import { SectionBadge } from "@/components/ui/section-badge";
+import { SectionHeader } from "@/components/ui/section-header";
 import { Tag } from "@/components/ui/tag";
 import { FeatureCard } from "./feature-card";
 import { ExperienceCard } from "./experience-card";
@@ -42,11 +42,10 @@ export const AboutClinic = () => {
           </div>
 
           <div className="max-w-150">
-            <SectionBadge icon={PawIcon} text="Nosso Consultório" />
-
-            <h2 className="mt-5 text-4xl leading-tight">
-              Centro Especializado em Dermatologia e Odontologia
-            </h2>
+            <SectionHeader
+              eyebrow="Nosso Consultório"
+              title="Centro Especializado em Dermatologia e Odontologia"
+            />
 
             <p className="mt-6 text-justify leading-relaxed text-foreground/80">
               Nosso consultório conta com estrutura preparada para procedimentos
@@ -77,4 +76,3 @@ export const AboutClinic = () => {
   );
 };
 
-export default AboutClinic;

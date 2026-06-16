@@ -14,4 +14,3 @@ export const SectionBadge = ({ icon: Icon, text }: SectionBadgeProps) => {
   );
 };
 
-export default SectionBadge;

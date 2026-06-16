@@ -25,4 +25,3 @@ export const StarRating = ({
   );
 };
 
-export default StarRating;
