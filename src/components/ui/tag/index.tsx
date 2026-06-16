@@ -14,4 +14,3 @@ export const Tag = ({ icon: Icon, label }: TagProps) => {
   );
 };
 
-export default Tag;

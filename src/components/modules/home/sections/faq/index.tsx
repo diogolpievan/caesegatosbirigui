@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { PawIcon } from "@/assets/icons";
-import { SectionBadge } from "@/components/ui/section-badge";
+import { SectionHeader } from "@/components/ui/section-header";
 import { FaqAccordion } from "./faq-accordion";
 import type { FaqEntry } from "./faq-item";
 
@@ -94,17 +93,11 @@ export const Faq = () => {
       <div className="container">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <SectionBadge icon={PawIcon} text="Perguntas Frequentes" />
-
-            <h2 className="mt-5 text-4xl leading-tight">
-              Esclarecendo Suas Principais Dúvidas
-            </h2>
-
-            <p className="mt-5 leading-relaxed text-foreground/80">
-              Selecionamos as perguntas mais frequentes para orientar você sobre
-              consultas, procedimentos dermatológicos e cuidados odontológicos do
-              seu pet.
-            </p>
+            <SectionHeader
+              eyebrow="Perguntas Frequentes"
+              title="Esclarecendo Suas Principais Dúvidas"
+              description="Selecionamos as perguntas mais frequentes para orientar você sobre consultas, procedimentos dermatológicos e cuidados odontológicos do seu pet."
+            />
 
             <div className="mt-8">
               <FaqAccordion items={FAQS} defaultOpenIndex={0} />
@@ -149,4 +142,3 @@ export const Faq = () => {
   );
 };
 
-export default Faq;

@@ -35,4 +35,3 @@ export const ScheduleCard = ({ title, items }: ScheduleCardProps) => {
   );
 };
 
-export default ScheduleCard;

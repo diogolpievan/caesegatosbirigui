@@ -17,4 +17,3 @@ export const ServiceBenefitList = ({ benefits }: ServiceBenefitListProps) => {
   );
 };
 
-export default ServiceBenefitList;

@@ -35,4 +35,3 @@ export const TestimonialCard = ({
   );
 };
 
-export default TestimonialCard;

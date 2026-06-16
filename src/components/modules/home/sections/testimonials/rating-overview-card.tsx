@@ -41,4 +41,3 @@ export const RatingOverviewCard = ({
   );
 };
 
-export default RatingOverviewCard;

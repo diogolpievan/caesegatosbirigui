@@ -26,14 +26,16 @@ export const FaqItem = ({
   return (
     <div
       className={`overflow-hidden rounded-2xl transition-colors duration-300 ${
-        isOpen ? "bg-accent text-white" : "bg-primary/20 text-secondary"
+        isOpen
+          ? "bg-accent text-white"
+          : "bg-primary/20 text-secondary hover:bg-primary/30"
       }`}
     >
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="flex w-full items-center justify-between gap-4 p-5 text-left font-paytone-one"
+        className="flex w-full cursor-pointer items-center justify-between gap-4 p-5 text-left font-paytone-one"
       >
         <span>{question}</span>
         <PawIcon
@@ -68,4 +70,3 @@ export const FaqItem = ({
   );
 };
 
-export default FaqItem;

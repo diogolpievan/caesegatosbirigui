@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { IdCardIcon, PawIcon, StethoscopeIcon } from "@/assets/icons";
-import { SectionBadge } from "@/components/ui/section-badge";
+import { SectionHeader } from "@/components/ui/section-header";
 import { CredentialBadge } from "./credential-badge";
 import { ScheduleCard } from "./schedule-card";
 import { ContactCard } from "./contact-card";
@@ -63,11 +63,10 @@ export const Specialist = () => {
           />
 
           <div>
-            <SectionBadge icon={PawIcon} text="Especialista" />
-
-            <h2 className="mt-5 text-3xl leading-tight">
-              Letusa Denise Silva Carobelli
-            </h2>
+            <SectionHeader
+              eyebrow="Especialista"
+              title="Letusa Denise Silva Carobelli"
+            />
 
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {CREDENTIALS.map(({ id, ...credential }) => (
@@ -106,4 +105,3 @@ export const Specialist = () => {
   );
 };
 
-export default Specialist;

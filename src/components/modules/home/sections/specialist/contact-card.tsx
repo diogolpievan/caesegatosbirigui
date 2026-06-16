@@ -36,4 +36,3 @@ export const ContactCard = ({ title }: ContactCardProps) => {
   );
 };
 
-export default ContactCard;
