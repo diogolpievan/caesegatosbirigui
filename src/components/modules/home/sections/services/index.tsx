@@ -59,7 +59,7 @@ export const Services = () => {
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
           {SERVICES.map(({ id, ...service }) => (
-            <Reveal key={id} variant="fadeUp" className="h-full">
+            <Reveal key={id} variant="fadeUp" delay={0.2} className="h-full">
               <ServiceCard {...service} />
             </Reveal>
           ))}

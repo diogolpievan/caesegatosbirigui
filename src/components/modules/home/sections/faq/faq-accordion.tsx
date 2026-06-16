@@ -18,7 +18,7 @@ export const FaqAccordion = ({
   );
 
   return (
-    <StaggerGroup className="flex flex-col gap-4">
+    <StaggerGroup delayChildren={0.2} className="flex flex-col gap-4">
       {items.map((item) => (
         <StaggerItem key={item.id} variant="fadeUp">
           <FaqItem

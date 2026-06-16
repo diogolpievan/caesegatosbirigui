@@ -2,8 +2,8 @@ import type { Variants } from "motion/react";
 
 /** Intervalos de stagger (segundos entre filhos). */
 export const STAGGER = {
-  tight: 0.1,
-  base: 0.15,
+  tight: 0.08,
+  base: 0.12,
 } as const;
 
 /**
