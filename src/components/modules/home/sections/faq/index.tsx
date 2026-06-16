@@ -106,7 +106,7 @@ export const Faq = () => {
             </div>
           </div>
 
-          <Reveal variant="fadeRight" className="relative hidden lg:block">
+          <Reveal variant="fadeRight" delay={0.15} className="relative hidden lg:block">
             <span
               aria-hidden
               className="absolute -top-4 right-12 size-16 rounded-2xl bg-accent/20"

@@ -54,7 +54,7 @@ export const Specialist = () => {
     <section id="specialist" className="py-20 lg:py-28">
       <div className="container">
         <div className="grid items-stretch gap-12 lg:grid-cols-[4fr_6fr] lg:gap-16">
-          <Reveal variant="scaleIn" className="self-end">
+          <Reveal variant="scaleIn" delay={0.1} className="self-end">
             <Image
               src="/images/letusa-denise.png"
               alt="Dra. Letusa Denise Silva Carobelli"
@@ -72,7 +72,10 @@ export const Specialist = () => {
               titleMotion="right"
             />
 
-            <StaggerGroup className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <StaggerGroup
+              delayChildren={0.2}
+              className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3"
+            >
               {CREDENTIALS.map(({ id, ...credential }) => (
                 <StaggerItem key={id} variant="popIn">
                   <CredentialBadge {...credential} />
@@ -80,7 +83,7 @@ export const Specialist = () => {
               ))}
             </StaggerGroup>
 
-            <Reveal variant="fade">
+            <Reveal variant="fade" delay={0.3}>
               <p className="mt-6 text-justify leading-relaxed text-foreground/80">
                 Com mais de 5 anos de experiência na área veterinária, a Dra.
                 Letusa dedica sua atuação exclusivamente à{" "}
@@ -91,7 +94,11 @@ export const Specialist = () => {
               </p>
             </Reveal>
 
-            <StaggerGroup as="ul" className="mt-5 flex flex-col gap-3">
+            <StaggerGroup
+              as="ul"
+              delayChildren={0.35}
+              className="mt-5 flex flex-col gap-3"
+            >
               {HIGHLIGHTS.map((highlight) => (
                 <StaggerItem
                   key={highlight}
@@ -108,10 +115,10 @@ export const Specialist = () => {
             </StaggerGroup>
 
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:gap-x-24">
-              <Reveal variant="fadeUp" className="h-full">
+              <Reveal variant="fadeUp" delay={0.4} className="h-full">
                 <ScheduleCard title="Atendimento" items={SCHEDULE} />
               </Reveal>
-              <Reveal variant="fadeUp" className="h-full">
+              <Reveal variant="fadeUp" delay={0.45} className="h-full">
                 <ContactCard title="Contatos" />
               </Reveal>
             </div>

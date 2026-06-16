@@ -19,7 +19,7 @@ export const AboutClinic = () => {
       <div className="container">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-28">
           <div className="relative">
-            <Reveal variant="fadeLeft">
+            <Reveal variant="fadeLeft" delay={0.1}>
               <div className="relative aspect-4/3 w-full overflow-hidden rounded-4xl">
                 <Image
                   fill
@@ -33,6 +33,7 @@ export const AboutClinic = () => {
 
             <Reveal
               variant="scaleIn"
+              delay={0.35}
               className="absolute -bottom-10 -right-14"
             >
               <ExperienceCard
@@ -55,7 +56,7 @@ export const AboutClinic = () => {
               titleMotion="right"
             />
 
-            <Reveal variant="fade">
+            <Reveal variant="fade" delay={0.2}>
               <p className="mt-6 text-justify leading-relaxed text-foreground/80">
                 Nosso consultório conta com estrutura preparada para
                 procedimentos dermatológicos e odontológicos, garantindo precisão
@@ -63,20 +64,23 @@ export const AboutClinic = () => {
               </p>
             </Reveal>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <Reveal variant="fadeUp" className="h-full">
+            <StaggerGroup
+              delayChildren={0.3}
+              className="mt-8 grid gap-4 sm:grid-cols-2"
+            >
+              <StaggerItem variant="scaleIn" className="h-full">
                 <FeatureCard
                   icon={CertificateIcon}
                   title="Profissional Experiente & Certificado"
                 />
-              </Reveal>
-              <Reveal variant="fadeUp" className="h-full">
+              </StaggerItem>
+              <StaggerItem variant="scaleIn" className="h-full">
                 <FeatureCard
                   icon={MicroscopeIcon}
                   title="Tecnologia Médica Avançada"
                 />
-              </Reveal>
-            </div>
+              </StaggerItem>
+            </StaggerGroup>
           </div>
         </div>
 

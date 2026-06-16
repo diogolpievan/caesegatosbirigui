@@ -7,7 +7,10 @@ type NavItemProps = {
 
 export const NavItem = ({label, href}: NavItemProps) => {
   return (
-    <Link href={href}>
+    <Link
+      href={href}
+      className="transition-colors duration-300 hover:text-accent"
+    >
       {label}
     </Link>
   )

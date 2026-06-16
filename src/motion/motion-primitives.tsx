@@ -19,6 +19,8 @@ type RevealProps = {
   variant?: PresetName;
   /** "view" reanima a cada entrada na viewport; "mount" só no carregamento. */
   trigger?: Trigger;
+  /** Atraso (s) para encadear depois de outro elemento (ex.: título → conteúdo). */
+  delay?: number;
   className?: string;
   id?: string;
 };
@@ -34,6 +36,7 @@ export const Reveal = ({
   children,
   variant = "fadeUp",
   trigger = "view",
+  delay = 0,
   className,
   id,
 }: RevealProps) => {
@@ -48,6 +51,7 @@ export const Reveal = ({
         variants={presets[variant]}
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
+        transition={{ delay }}
       >
         {children}
       </motion.div>

@@ -37,7 +37,7 @@ export const Testimonials = () => {
         />
 
         <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-[0.3fr_1fr]">
-          <Reveal variant="scaleIn" className="h-full">
+          <Reveal variant="scaleIn" delay={0.15} className="h-full">
             <RatingOverviewCard
               rating={SUMMARY.rating}
               max={SUMMARY.max}
@@ -45,7 +45,7 @@ export const Testimonials = () => {
             />
           </Reveal>
 
-          <Reveal variant="fadeUp" className="h-full">
+          <Reveal variant="fadeUp" delay={0.25} className="h-full">
             <TestimonialsCarousel testimonials={TESTIMONIALS} />
           </Reveal>
         </div>
