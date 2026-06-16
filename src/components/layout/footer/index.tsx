@@ -17,6 +17,7 @@ import {
   PHONE_LABEL,
   WHATSAPP_HREF,
 } from "@/constants/contact";
+import { Reveal, StaggerGroup, StaggerItem } from "@/motion";
 import { FooterContactItem } from "./footer-contact-item";
 import { FooterNavList } from "./footer-nav-list";
 import { FooterMapCard } from "./footer-map-card";
@@ -51,8 +52,8 @@ export const Footer = () => {
   return (
     <footer className="mt-auto bg-primary/20 font-paytone-one text-lg text-secondary">
       <div className="container py-16">
-        <div className="grid gap-10 lg:grid-cols-[35fr_65fr]">
-          <div className="flex flex-col gap-10">
+        <StaggerGroup className="grid gap-10 lg:grid-cols-[35fr_65fr]">
+          <StaggerItem variant="fadeUp" className="flex flex-col gap-10">
             <Image
               width={140}
               height={140}
@@ -74,9 +75,9 @@ export const Footer = () => {
                 href={EMAIL_HREF}
               />
             </div>
-          </div>
+          </StaggerItem>
 
-          <div className="flex flex-col">
+          <StaggerItem variant="fadeUp" className="flex flex-col">
             <div className="grid gap-10 sm:grid-cols-3">
               <FooterNavList title="Acesso Rápido" items={QUICK_LINKS} />
 
@@ -133,12 +134,15 @@ export const Footer = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </StaggerItem>
+        </StaggerGroup>
 
-        <div className="mt-12 border-t border-secondary/25 pt-6 text-center">
+        <Reveal
+          variant="fade"
+          className="mt-12 border-t border-secondary/25 pt-6 text-center"
+        >
           Copyright © 2026 Todos os Direitos Reservados
-        </div>
+        </Reveal>
       </div>
     </footer>
   );

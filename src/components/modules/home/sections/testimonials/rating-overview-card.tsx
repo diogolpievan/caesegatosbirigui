@@ -14,7 +14,7 @@ export const RatingOverviewCard = ({
   avatarsCount = 4,
 }: RatingOverviewCardProps) => {
   return (
-    <div className="flex flex-col items-center justify-center rounded-3xl bg-accent p-10 text-center text-white">
+    <div className="flex h-full flex-col items-center justify-center rounded-3xl bg-accent p-10 text-center text-white">
       <div className="flex -space-x-3">
         {Array.from({ length: avatarsCount }, (_, index) => (
           <span

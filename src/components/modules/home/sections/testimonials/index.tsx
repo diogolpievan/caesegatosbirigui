@@ -1,4 +1,5 @@
 import { SectionHeader } from "@/components/ui/section-header";
+import { StaggerGroup, StaggerItem } from "@/motion";
 import { RatingOverviewCard } from "./rating-overview-card";
 import { TestimonialsCarousel } from "./testimonials-carousel";
 
@@ -35,15 +36,19 @@ export const Testimonials = () => {
           title="A Opinião de Quem Confia na Cães e Gatos"
         />
 
-        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-[0.3fr_1fr]">
-          <RatingOverviewCard
-            rating={SUMMARY.rating}
-            max={SUMMARY.max}
-            reviewsCount={SUMMARY.reviewsCount}
-          />
+        <StaggerGroup className="mt-14 grid items-stretch gap-6 lg:grid-cols-[0.3fr_1fr]">
+          <StaggerItem variant="scaleIn" className="h-full">
+            <RatingOverviewCard
+              rating={SUMMARY.rating}
+              max={SUMMARY.max}
+              reviewsCount={SUMMARY.reviewsCount}
+            />
+          </StaggerItem>
 
-          <TestimonialsCarousel testimonials={TESTIMONIALS} />
-        </div>
+          <StaggerItem variant="fadeUp" className="h-full">
+            <TestimonialsCarousel testimonials={TESTIMONIALS} />
+          </StaggerItem>
+        </StaggerGroup>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import { Paytone_One, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { MotionProvider } from "@/motion";
 
 const paytoneOne = Paytone_One({
   variable: "--font-paytone-one",
@@ -35,9 +36,11 @@ export default function RootLayout({
         className="relative min-h-full flex flex-col"
         suppressHydrationWarning
       >
-        <Header />
-        {children}
-        <Footer />
+        <MotionProvider>
+          <Header />
+          {children}
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { InstagramIcon, PawCircleIcon } from "@/assets/icons";
 import { INSTAGRAM_HREF, WHATSAPP_HREF } from "@/constants/contact";
+import { Reveal, StaggerGroup, StaggerItem } from "@/motion";
 
 export const Hero = () => {
   return (
@@ -13,18 +14,28 @@ export const Hero = () => {
     >
       <div className="container flex min-h-[93vh] flex-col justify-center pt-40 pb-32">
         <div className="max-w-150">
-          <h1 className="text-5xl leading-[1.1] md:text-6xl">
-            Cuidando do Seu Pet Como se Fosse Nosso
-          </h1>
+          <Reveal variant="fadeLeft" trigger="mount">
+            <h1 className="text-5xl leading-[1.1] md:text-6xl">
+              Cuidando do Seu Pet Como se Fosse Nosso
+            </h1>
+          </Reveal>
 
-          <div className="mt-8 flex items-center gap-4">
-            <Button
-              label="Agende Agora"
-              icon={PawCircleIcon}
-              href={WHATSAPP_HREF}
-            />
-            <Button icon={InstagramIcon} href={INSTAGRAM_HREF} />
-          </div>
+          <StaggerGroup
+            trigger="mount"
+            delayChildren={0.25}
+            className="mt-8 flex items-center gap-4"
+          >
+            <StaggerItem variant="scaleIn">
+              <Button
+                label="Agende Agora"
+                icon={PawCircleIcon}
+                href={WHATSAPP_HREF}
+              />
+            </StaggerItem>
+            <StaggerItem variant="scaleIn">
+              <Button icon={InstagramIcon} href={INSTAGRAM_HREF} />
+            </StaggerItem>
+          </StaggerGroup>
         </div>
       </div>
 

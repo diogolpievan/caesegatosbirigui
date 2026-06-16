@@ -29,9 +29,10 @@ export const Button = ({
   const spacing = isIconOnly ? "size-11 justify-center" : "px-4 py-2";
 
   const baseStyles = `
-    rounded-xl flex items-center gap-2 bg-accent text-white font-paytone-one text-xl hover:bg-white hover:text-accent transition-colors duration-300
+    rounded-xl flex items-center gap-2 bg-accent text-white font-paytone-one text-xl hover:bg-white hover:text-accent transition duration-300 ease-out
     ${spacing} shadow-md hover:shadow-none
     hover:border-b-2 hover:border-accent
+    hover:scale-[1.03] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-colors
     ${className}
   `;
 

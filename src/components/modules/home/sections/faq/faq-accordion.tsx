@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { StaggerGroup, StaggerItem } from "@/motion";
 import { FaqItem, type FaqEntry } from "./faq-item";
 
 type FaqAccordionProps = {
@@ -17,19 +18,20 @@ export const FaqAccordion = ({
   );
 
   return (
-    <div className="flex flex-col gap-4">
+    <StaggerGroup className="flex flex-col gap-4">
       {items.map((item) => (
-        <FaqItem
-          key={item.id}
-          question={item.question}
-          answer={item.answer}
-          isOpen={openId === item.id}
-          onToggle={() =>
-            setOpenId((current) => (current === item.id ? null : item.id))
-          }
-        />
+        <StaggerItem key={item.id} variant="fadeUp">
+          <FaqItem
+            question={item.question}
+            answer={item.answer}
+            isOpen={openId === item.id}
+            onToggle={() =>
+              setOpenId((current) => (current === item.id ? null : item.id))
+            }
+          />
+        </StaggerItem>
       ))}
-    </div>
+    </StaggerGroup>
   );
 };
 

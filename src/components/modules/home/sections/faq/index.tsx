@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SectionHeader } from "@/components/ui/section-header";
+import { Reveal } from "@/motion";
 import { FaqAccordion } from "./faq-accordion";
 import type { FaqEntry } from "./faq-item";
 
@@ -104,7 +105,7 @@ export const Faq = () => {
             </div>
           </div>
 
-          <div className="relative hidden lg:block">
+          <Reveal variant="scaleIn" className="relative hidden lg:block">
             <span
               aria-hidden
               className="absolute -top-4 right-12 size-16 rounded-2xl bg-accent/20"
@@ -135,7 +136,7 @@ export const Faq = () => {
                 className="object-contain object-bottom"
               />
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
