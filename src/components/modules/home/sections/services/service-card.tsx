@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { IconComponent } from "@/assets/icons";
+import { Reveal } from "@/motion";
 import { ServiceBenefitList } from "./service-benefit-list";
 
 type ServiceCardProps = {
@@ -42,13 +43,15 @@ export const ServiceCard = ({
           image.className ?? "bottom-0 right-0 aspect-square w-[48%] max-w-72"
         }`}
       >
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          sizes="(max-width: 1024px) 50vw, 420px"
-          className="object-contain object-bottom"
-        />
+        <Reveal variant="scaleIn" className="h-full">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="(max-width: 1024px) 50vw, 420px"
+            className="object-contain object-bottom"
+          />
+        </Reveal>
       </div>
     </article>
   );

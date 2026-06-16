@@ -2,9 +2,9 @@ import type { Transition } from "motion/react";
 
 /** Durações (em segundos) — centralizadas, sem números mágicos espalhados. */
 export const DURATION = {
-  fast: 0.4,
-  base: 0.6,
-  slow: 0.8,
+  fast: 4,
+  base: 4,
+  slow: 4,
 } as const;
 
 /** Easing suave (easeOutQuint), sem overshoot/bounce — transmite refinamento. */

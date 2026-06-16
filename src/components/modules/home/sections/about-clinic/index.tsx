@@ -18,34 +18,41 @@ export const AboutClinic = () => {
     <section id="about" className="py-20 lg:py-28">
       <div className="container">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-28">
-          <Reveal variant="fadeLeft" className="relative">
-            <div className="relative aspect-4/3 w-full overflow-hidden rounded-4xl">
-              <Image
-                fill
-                src="/images/caes-e-gatos-birigui-nosso-consultorio-veterinario.jpg"
-                alt="Veterinária Letusa da Cães e Gatos utilizando microscópio em consultório"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
+          <div className="relative">
+            <Reveal variant="fadeLeft">
+              <div className="relative aspect-4/3 w-full overflow-hidden rounded-4xl">
+                <Image
+                  fill
+                  src="/images/caes-e-gatos-birigui-nosso-consultorio-veterinario.jpg"
+                  alt="Veterinária Letusa da Cães e Gatos utilizando microscópio em consultório"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
 
-            <ExperienceCard
-              number="5+"
-              label={
-                <>
-                  Anos de
-                  <br />
-                  Experiência
-                </>
-              }
+            <Reveal
+              variant="scaleIn"
               className="absolute -bottom-10 -right-14"
-            />
-          </Reveal>
+            >
+              <ExperienceCard
+                number="5+"
+                label={
+                  <>
+                    Anos de
+                    <br />
+                    Experiência
+                  </>
+                }
+              />
+            </Reveal>
+          </div>
 
           <div className="max-w-150">
             <SectionHeader
               eyebrow="Nosso Consultório"
               title="Centro Especializado em Dermatologia e Odontologia"
+              titleMotion="right"
             />
 
             <Reveal variant="fade">
@@ -56,20 +63,20 @@ export const AboutClinic = () => {
               </p>
             </Reveal>
 
-            <StaggerGroup className="mt-8 grid gap-4 sm:grid-cols-2">
-              <StaggerItem variant="fadeLeft">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <Reveal variant="fadeUp" className="h-full">
                 <FeatureCard
                   icon={CertificateIcon}
                   title="Profissional Experiente & Certificado"
                 />
-              </StaggerItem>
-              <StaggerItem variant="fadeLeft">
+              </Reveal>
+              <Reveal variant="fadeUp" className="h-full">
                 <FeatureCard
                   icon={MicroscopeIcon}
                   title="Tecnologia Médica Avançada"
                 />
-              </StaggerItem>
-            </StaggerGroup>
+              </Reveal>
+            </div>
           </div>
         </div>
 

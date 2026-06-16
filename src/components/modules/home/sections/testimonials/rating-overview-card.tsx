@@ -1,4 +1,5 @@
 import { StarRating } from "@/components/ui/star-rating";
+import { StaggerGroup, StaggerItem, STAGGER } from "@/motion";
 
 type RatingOverviewCardProps = {
   rating: number;
@@ -15,14 +16,16 @@ export const RatingOverviewCard = ({
 }: RatingOverviewCardProps) => {
   return (
     <div className="flex h-full flex-col items-center justify-center rounded-3xl bg-accent p-10 text-center text-white">
-      <div className="flex -space-x-3">
+      <StaggerGroup
+        staggerChildren={STAGGER.tight}
+        className="flex -space-x-3"
+      >
         {Array.from({ length: avatarsCount }, (_, index) => (
-          <span
-            key={index}
-            className="size-10 rounded-full bg-white/40 ring-2 ring-accent"
-          />
+          <StaggerItem key={index} variant="popIn">
+            <span className="block size-10 rounded-full bg-white/40 ring-2 ring-accent" />
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerGroup>
 
       <p className="mt-5 font-paytone-one">
         <span className="text-5xl">{rating.toFixed(1)}</span>
@@ -32,6 +35,7 @@ export const RatingOverviewCard = ({
       <StarRating
         rating={Math.round(rating)}
         max={max}
+        animated
         className="mt-2 text-white"
         starClassName="size-5"
       />
@@ -40,4 +44,3 @@ export const RatingOverviewCard = ({
     </div>
   );
 };
-

@@ -97,6 +97,7 @@ export const Faq = () => {
             <SectionHeader
               eyebrow="Perguntas Frequentes"
               title="Esclarecendo Suas Principais Dúvidas"
+              titleMotion="up"
               description="Selecionamos as perguntas mais frequentes para orientar você sobre consultas, procedimentos dermatológicos e cuidados odontológicos do seu pet."
             />
 
@@ -105,7 +106,7 @@ export const Faq = () => {
             </div>
           </div>
 
-          <Reveal variant="scaleIn" className="relative hidden lg:block">
+          <Reveal variant="fadeRight" className="relative hidden lg:block">
             <span
               aria-hidden
               className="absolute -top-4 right-12 size-16 rounded-2xl bg-accent/20"

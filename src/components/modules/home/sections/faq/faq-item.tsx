@@ -51,7 +51,11 @@ export const FaqItem = ({
         }`}
       >
         <div className="overflow-hidden">
-          <div className="space-y-3 px-5 pb-5 text-sm leading-relaxed text-white/90">
+          <div
+            className={`space-y-3 px-5 pb-5 text-sm leading-relaxed text-white/90 transition-opacity duration-500 ${
+              isOpen ? "opacity-100" : "opacity-0"
+            }`}
+          >
             {answer.map((block, index) =>
               block.type === "text" ? (
                 <p key={index}>{block.text}</p>

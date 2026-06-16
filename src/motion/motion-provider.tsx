@@ -9,5 +9,5 @@ import type { ReactNode } from "react";
  * mantendo apenas fades simples (acessibilidade).
  */
 export const MotionProvider = ({ children }: { children: ReactNode }) => (
-  <MotionConfig reducedMotion="user">{children}</MotionConfig>
+  <MotionConfig reducedMotion="never">{children}</MotionConfig>
 );

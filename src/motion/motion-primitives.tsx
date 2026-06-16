@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
-import type { ReactNode } from "react";
+import { motion, useInView } from "motion/react";
+import { useRef, type ReactNode } from "react";
 import { presets, type PresetName } from "./presets";
 import { staggerContainer, STAGGER } from "./stagger";
 import { VIEWPORT } from "./viewport";
@@ -23,24 +23,37 @@ type RevealProps = {
   id?: string;
 };
 
-/** Revela um bloco isolado ao entrar na viewport (ou no mount). */
+/**
+ * Revela um bloco isolado ao entrar na viewport (ou no mount).
+ *
+ * O wrapper externo é quem é observado (não sofre transform → não muda de
+ * tamanho), enquanto o filho interno é o que anima. Isso evita o "flicker"
+ * causado por elementos que entram/saem do gatilho ao se moverem.
+ */
 export const Reveal = ({
   children,
   variant = "fadeUp",
   trigger = "view",
   className,
   id,
-}: RevealProps) => (
-  <motion.div
-    id={id}
-    className={className}
-    variants={presets[variant]}
-    initial="hidden"
-    {...triggerProps(trigger)}
-  >
-    {children}
-  </motion.div>
-);
+}: RevealProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, VIEWPORT);
+  const isVisible = trigger === "mount" || inView;
+
+  return (
+    <div ref={ref} id={id} className={className}>
+      <motion.div
+        className="h-full"
+        variants={presets[variant]}
+        initial="hidden"
+        animate={isVisible ? "visible" : "hidden"}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+};
 
 type StaggerGroupTag = "div" | "ul";
 

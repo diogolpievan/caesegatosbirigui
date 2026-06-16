@@ -54,7 +54,7 @@ export const Specialist = () => {
     <section id="specialist" className="py-20 lg:py-28">
       <div className="container">
         <div className="grid items-stretch gap-12 lg:grid-cols-[4fr_6fr] lg:gap-16">
-          <Reveal variant="fadeLeft" className="self-end">
+          <Reveal variant="scaleIn" className="self-end">
             <Image
               src="/images/letusa-denise.png"
               alt="Dra. Letusa Denise Silva Carobelli"
@@ -69,6 +69,7 @@ export const Specialist = () => {
             <SectionHeader
               eyebrow="Especialista"
               title="Letusa Denise Silva Carobelli"
+              titleMotion="right"
             />
 
             <StaggerGroup className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -106,14 +107,14 @@ export const Specialist = () => {
               ))}
             </StaggerGroup>
 
-            <StaggerGroup className="mt-8 grid gap-6 sm:grid-cols-2 lg:gap-x-24">
-              <StaggerItem variant="fadeUp" className="h-full">
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:gap-x-24">
+              <Reveal variant="fadeUp" className="h-full">
                 <ScheduleCard title="Atendimento" items={SCHEDULE} />
-              </StaggerItem>
-              <StaggerItem variant="fadeUp" className="h-full">
+              </Reveal>
+              <Reveal variant="fadeUp" className="h-full">
                 <ContactCard title="Contatos" />
-              </StaggerItem>
-            </StaggerGroup>
+              </Reveal>
+            </div>
           </div>
         </div>
       </div>
