@@ -1,5 +1,6 @@
 import { IconComponent, PawIcon } from "@/assets/icons";
 import { SectionBadge } from "@/components/ui/section-badge";
+import { StaggerGroup, StaggerItem } from "@/motion";
 
 type SectionHeaderProps = {
   eyebrow: string;
@@ -21,20 +22,27 @@ export const SectionHeader = ({
   const isCenter = align === "center";
 
   return (
-    <div
+    <StaggerGroup
+      staggerChildren={0.12}
       className={`flex flex-col ${isCenter ? "items-center text-center" : ""} ${className}`}
     >
-      <SectionBadge icon={eyebrowIcon} text={eyebrow} />
+      <StaggerItem variant="popIn">
+        <SectionBadge icon={eyebrowIcon} text={eyebrow} />
+      </StaggerItem>
 
-      <h2
-        className={`mt-5 text-4xl leading-tight ${isCenter ? "max-w-2xl" : ""}`}
-      >
-        {title}
-      </h2>
+      <StaggerItem variant="fadeLeft">
+        <h2
+          className={`mt-5 text-4xl leading-tight ${isCenter ? "max-w-2xl" : ""}`}
+        >
+          {title}
+        </h2>
+      </StaggerItem>
 
       {description && (
-        <p className="mt-5 leading-relaxed text-foreground/80">{description}</p>
+        <StaggerItem variant="fade">
+          <p className="mt-5 leading-relaxed text-foreground/80">{description}</p>
+        </StaggerItem>
       )}
-    </div>
+    </StaggerGroup>
   );
 };

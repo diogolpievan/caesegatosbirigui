@@ -1,4 +1,5 @@
 import { PawIcon } from "@/assets/icons";
+import { StaggerGroup, StaggerItem, STAGGER } from "@/motion";
 
 type ServiceBenefitListProps = {
   benefits: string[];
@@ -6,14 +7,22 @@ type ServiceBenefitListProps = {
 
 export const ServiceBenefitList = ({ benefits }: ServiceBenefitListProps) => {
   return (
-    <ul className="flex flex-col gap-3">
+    <StaggerGroup
+      as="ul"
+      staggerChildren={STAGGER.tight}
+      className="flex flex-col gap-3"
+    >
       {benefits.map((benefit) => (
-        <li key={benefit} className="flex items-center gap-2 text-foreground/90">
+        <StaggerItem
+          key={benefit}
+          as="li"
+          variant="fadeLeft"
+          className="flex items-center gap-2 text-foreground/90"
+        >
           <PawIcon className="size-4 shrink-0 text-secondary" />
           {benefit}
-        </li>
+        </StaggerItem>
       ))}
-    </ul>
+    </StaggerGroup>
   );
 };
-

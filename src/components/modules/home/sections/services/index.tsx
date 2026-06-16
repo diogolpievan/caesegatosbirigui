@@ -1,5 +1,6 @@
 import { DermatologyIcon, ToothIcon } from "@/assets/icons";
 import { SectionHeader } from "@/components/ui/section-header";
+import { StaggerGroup, StaggerItem } from "@/motion";
 import { ServiceCard } from "./service-card";
 
 const SERVICES = [
@@ -56,11 +57,13 @@ export const Services = () => {
           title="Cuidado Especializado Para a Saúde do Seu Pet"
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
+        <StaggerGroup className="mt-14 grid gap-8 lg:grid-cols-2">
           {SERVICES.map(({ id, ...service }) => (
-            <ServiceCard key={id} {...service} />
+            <StaggerItem key={id} variant="fadeUp" className="h-full">
+              <ServiceCard {...service} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

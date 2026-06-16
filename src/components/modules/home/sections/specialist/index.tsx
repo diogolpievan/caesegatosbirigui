@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { IdCardIcon, PawIcon, StethoscopeIcon } from "@/assets/icons";
 import { SectionHeader } from "@/components/ui/section-header";
+import { Reveal, StaggerGroup, StaggerItem } from "@/motion";
 import { CredentialBadge } from "./credential-badge";
 import { ScheduleCard } from "./schedule-card";
 import { ContactCard } from "./contact-card";
@@ -53,14 +54,16 @@ export const Specialist = () => {
     <section id="specialist" className="py-20 lg:py-28">
       <div className="container">
         <div className="grid items-stretch gap-12 lg:grid-cols-[4fr_6fr] lg:gap-16">
-          <Image
-            src="/images/letusa-denise.png"
-            alt="Dra. Letusa Denise Silva Carobelli"
-            width={614}
-            height={861}
-            sizes="(max-width: 1024px) 100vw, 40vw"
-            className="h-auto w-full self-end rounded-[40px]"
-          />
+          <Reveal variant="fadeLeft" className="self-end">
+            <Image
+              src="/images/letusa-denise.png"
+              alt="Dra. Letusa Denise Silva Carobelli"
+              width={614}
+              height={861}
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="h-auto w-full rounded-[40px]"
+            />
+          </Reveal>
 
           <div>
             <SectionHeader
@@ -68,36 +71,49 @@ export const Specialist = () => {
               title="Letusa Denise Silva Carobelli"
             />
 
-            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <StaggerGroup className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {CREDENTIALS.map(({ id, ...credential }) => (
-                <CredentialBadge key={id} {...credential} />
+                <StaggerItem key={id} variant="popIn">
+                  <CredentialBadge {...credential} />
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
 
-            <p className="mt-6 text-justify leading-relaxed text-foreground/80">
-              Com mais de 5 anos de experiência na área veterinária, a Dra.
-              Letusa dedica sua atuação exclusivamente à{" "}
-              <strong className="text-secondary">dermatologia</strong> e{" "}
-              <strong className="text-secondary">odontologia</strong> de cães e
-              gatos, oferecendo atendimento individualizado e baseado em
-              evidências científicas.
-            </p>
+            <Reveal variant="fade">
+              <p className="mt-6 text-justify leading-relaxed text-foreground/80">
+                Com mais de 5 anos de experiência na área veterinária, a Dra.
+                Letusa dedica sua atuação exclusivamente à{" "}
+                <strong className="text-secondary">dermatologia</strong> e{" "}
+                <strong className="text-secondary">odontologia</strong> de cães e
+                gatos, oferecendo atendimento individualizado e baseado em
+                evidências científicas.
+              </p>
+            </Reveal>
 
-            <ul className="mt-5 flex flex-col gap-3">
+            <StaggerGroup as="ul" className="mt-5 flex flex-col gap-3">
               {HIGHLIGHTS.map((highlight) => (
-                <li key={highlight} className="flex gap-2">
+                <StaggerItem
+                  key={highlight}
+                  as="li"
+                  variant="fadeUp"
+                  className="flex gap-2"
+                >
                   <PawIcon className="mt-1 size-4 shrink-0 text-accent" />
                   <span className="text-justify leading-relaxed text-foreground/80">
                     {highlight}
                   </span>
-                </li>
+                </StaggerItem>
               ))}
-            </ul>
+            </StaggerGroup>
 
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:gap-x-24">
-              <ScheduleCard title="Atendimento" items={SCHEDULE} />
-              <ContactCard title="Contatos" />
-            </div>
+            <StaggerGroup className="mt-8 grid gap-6 sm:grid-cols-2 lg:gap-x-24">
+              <StaggerItem variant="fadeUp" className="h-full">
+                <ScheduleCard title="Atendimento" items={SCHEDULE} />
+              </StaggerItem>
+              <StaggerItem variant="fadeUp" className="h-full">
+                <ContactCard title="Contatos" />
+              </StaggerItem>
+            </StaggerGroup>
           </div>
         </div>
       </div>
