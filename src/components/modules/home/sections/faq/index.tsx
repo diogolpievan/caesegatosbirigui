@@ -2,6 +2,7 @@ import Image from "next/image";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Reveal } from "@/motion";
 import { FaqAccordion } from "./faq-accordion";
+import { RectanglesDecoration } from "./rectangles-decoration";
 import type { FaqEntry } from "./faq-item";
 
 const FAQS: FaqEntry[] = [
@@ -106,38 +107,30 @@ export const Faq = () => {
             </div>
           </div>
 
-          <Reveal variant="fadeRight" delay={0.15} className="relative hidden lg:block">
-            <span
-              aria-hidden
-              className="absolute -top-4 right-12 size-16 rounded-2xl bg-accent/20"
+          <div className="relative hidden lg:block">
+            <RectanglesDecoration
+              color="pink"
+              delay={0.8}
+              className="absolute -left-10 -top-10 w-44"
             />
-            <span
-              aria-hidden
-              className="absolute top-20 -right-2 size-10 rounded-xl bg-accent/15"
-            />
-            <span
-              aria-hidden
-              className="absolute top-1/3 -left-6 size-8 rounded-lg bg-accent/15"
-            />
-            <span
-              aria-hidden
-              className="absolute bottom-10 -left-4 size-20 rounded-2xl bg-primary/30"
-            />
-            <span
-              aria-hidden
-              className="absolute bottom-0 left-20 size-12 rounded-xl bg-primary/25"
+            <RectanglesDecoration
+              color="blue"
+              delay={0.95}
+              className="absolute -bottom-10 -right-10 w-44"
             />
 
-            <div className="relative z-10 aspect-square w-full">
-              <Image
-                src="/images/caes-e-gatos-birigui-faq-image.png"
-                alt=""
-                fill
-                sizes="(max-width: 1024px) 0px, 50vw"
-                className="object-contain object-bottom"
-              />
-            </div>
-          </Reveal>
+            <Reveal variant="fadeRight" delay={0.15} className="relative z-10">
+              <div className="relative aspect-square w-full">
+                <Image
+                  src="/images/caes-e-gatos-birigui-faq-image.png"
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 0px, 50vw"
+                  className="object-contain object-bottom"
+                />
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>
