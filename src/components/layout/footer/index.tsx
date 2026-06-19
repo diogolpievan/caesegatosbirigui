@@ -53,27 +53,29 @@ export const Footer = () => {
     <footer className="mt-auto bg-primary/20 font-paytone-one text-lg text-secondary">
       <div className="container py-16">
         <div className="grid gap-10 lg:grid-cols-[35fr_65fr]">
-          <Reveal variant="fadeUp" className="flex flex-col gap-10">
-            <Image
-              width={140}
-              height={140}
-              src="/images/logo-caes-e-gatos-birigui.png"
-              alt="Cães e Gatos Birigui"
-            />
+          <Reveal variant="fadeUp">
+            <div className="flex flex-col gap-20">
+              <Image
+                width={140}
+                height={140}
+                src="/images/logo-caes-e-gatos-birigui.png"
+                alt="Cães e Gatos Birigui"
+              />
 
-            <div className="flex flex-col gap-6">
-              <FooterContactItem
-                icon={PhoneIcon}
-                label="Entre em Contato"
-                value={PHONE_LABEL}
-                href={PHONE_HREF}
-              />
-              <FooterContactItem
-                icon={MailIcon}
-                label="E-mail"
-                value={EMAIL_LABEL}
-                href={EMAIL_HREF}
-              />
+              <div className="flex flex-col gap-6">
+                <FooterContactItem
+                  icon={PhoneIcon}
+                  label="Entre em Contato"
+                  value={PHONE_LABEL}
+                  href={PHONE_HREF}
+                />
+                <FooterContactItem
+                  icon={MailIcon}
+                  label="E-mail"
+                  value={EMAIL_LABEL}
+                  href={EMAIL_HREF}
+                />
+              </div>
             </div>
           </Reveal>
 
