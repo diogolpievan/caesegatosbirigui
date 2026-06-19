@@ -3,6 +3,7 @@ import { Paytone_One, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { WhatsappButton } from "@/components/layout/whatsapp-button";
 import { MotionProvider } from "@/motion";
 
 const paytoneOne = Paytone_One({
@@ -41,6 +42,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </MotionProvider>
+        <WhatsappButton />
       </body>
     </html>
   );
