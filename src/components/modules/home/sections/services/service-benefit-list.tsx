@@ -17,9 +17,9 @@ export const ServiceBenefitList = ({ benefits }: ServiceBenefitListProps) => {
           key={benefit}
           as="li"
           variant="fadeLeft"
-          className="flex items-center gap-2 text-foreground/90"
+          className="flex items-center gap-2 text-foreground/90 transition-colors duration-500 group-hover:text-white"
         >
-          <PawIcon className="size-4 shrink-0 text-secondary" />
+          <PawIcon className="size-4 shrink-0 text-secondary transition-colors duration-500 group-hover:text-white" />
           {benefit}
         </StaggerItem>
       ))}
