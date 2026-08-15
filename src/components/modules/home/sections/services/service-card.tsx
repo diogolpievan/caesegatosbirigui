@@ -25,7 +25,7 @@ export const ServiceCard = ({
   image,
 }: ServiceCardProps) => {
   return (
-    <article className="group relative flex h-full min-h-180 flex-col overflow-hidden rounded-[40px] bg-background p-8 before:absolute before:inset-0 before:z-0 before:origin-bottom before:scale-y-0 before:bg-foreground before:transition-transform before:duration-500 before:ease-out before:content-[''] group-hover:before:scale-y-100">
+    <article className="group relative flex h-full min-h-180 flex-col overflow-hidden rounded-[40px] bg-background p-8 before:absolute before:inset-0 before:z-0 before:origin-bottom before:scale-y-0 before:bg-secondary before:transition-transform before:duration-500 before:ease-out before:content-[''] hover:before:scale-y-100">
       <div className="relative z-10">
         <Icon
           className={`shrink-0 text-secondary transition-colors duration-500 group-hover:text-white ${iconClassName}`}

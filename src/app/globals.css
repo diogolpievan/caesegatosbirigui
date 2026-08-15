@@ -25,9 +25,11 @@ body {
   font-weight: 500;
 }
 
-.title, h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-paytone-one), sans-serif;
-  color: var(--secondary);
+@layer base {
+  .title, h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-paytone-one), sans-serif;
+    color: var(--secondary);
+  }
 }
 
 .container {
