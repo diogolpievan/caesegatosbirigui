@@ -1,9 +1,28 @@
 import Image from "next/image";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Reveal } from "@/motion";
+import { JsonLd } from "@/components/seo/json-ld";
 import { FaqAccordion } from "./faq-accordion";
 import { RectanglesDecoration } from "./rectangles-decoration";
-import type { FaqEntry } from "./faq-item";
+import type { FaqBlock, FaqEntry } from "./faq-item";
+
+const faqBlocksToText = (blocks: FaqBlock[]) =>
+  blocks
+    .map((block) => (block.type === "text" ? block.text : block.items.join(". ")))
+    .join(" ");
+
+const FAQ_PAGE_SCHEMA = (faqs: FaqEntry[]) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ question, answer }) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faqBlocksToText(answer),
+    },
+  })),
+});
 
 const FAQS: FaqEntry[] = [
   {
@@ -92,6 +111,7 @@ const FAQS: FaqEntry[] = [
 export const Faq = () => {
   return (
     <section id="faq" className="py-20 lg:py-28">
+      <JsonLd data={FAQ_PAGE_SCHEMA(FAQS)} />
       <div className="container">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
@@ -123,7 +143,7 @@ export const Faq = () => {
               <div className="relative aspect-square w-full">
                 <Image
                   src="/images/caes-e-gatos-birigui-faq-image.png"
-                  alt=""
+                  alt="Veterinária realizando avaliação dermatológica em cachorro com lâmpada de Wood"
                   fill
                   sizes="(max-width: 1024px) 0px, 50vw"
                   className="object-contain object-bottom"
