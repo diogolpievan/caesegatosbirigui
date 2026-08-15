@@ -2,6 +2,8 @@ import Image from "next/image";
 import { IdCardIcon, PawIcon, StethoscopeIcon } from "@/assets/icons";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Reveal, StaggerGroup, StaggerItem } from "@/motion";
+import { JsonLd } from "@/components/seo/json-ld";
+import { BUSINESS_SCHEMA_ID, SITE_URL } from "@/constants/seo";
 import { CredentialBadge } from "./credential-badge";
 import { ScheduleCard } from "./schedule-card";
 import { ContactCard } from "./contact-card";
@@ -49,9 +51,20 @@ const HIGHLIGHTS = [
   "Na Cães e Gatos, cada atendimento é realizado diretamente pela especialista responsável, proporcionando acompanhamento contínuo e atenção personalizada.",
 ];
 
+const SPECIALIST_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Letusa Denise Silva Carobelli",
+  jobTitle: "Médica Veterinária",
+  image: `${SITE_URL}/images/letusa-denise.png`,
+  identifier: "CRMV-SP 39275",
+  worksFor: { "@id": BUSINESS_SCHEMA_ID },
+};
+
 export const Specialist = () => {
   return (
     <section id="specialist" className="py-20 lg:py-28">
+      <JsonLd data={SPECIALIST_SCHEMA} />
       <div className="container">
         <div className="grid items-stretch gap-12 lg:grid-cols-[4fr_6fr] lg:gap-16">
           <Reveal variant="scaleIn" delay={0.1} className="self-end">

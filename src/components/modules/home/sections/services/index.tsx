@@ -1,6 +1,8 @@
 import { DermatologyIcon, ToothIcon } from "@/assets/icons";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Reveal } from "@/motion";
+import { JsonLd } from "@/components/seo/json-ld";
+import { BUSINESS_SCHEMA_ID } from "@/constants/seo";
 import { ServiceCard } from "./service-card";
 
 const SERVICES = [
@@ -47,9 +49,25 @@ const SERVICES = [
   },
 ];
 
+const SERVICES_SCHEMA = SERVICES.map(({ title, description }) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: title,
+  name: title,
+  description,
+  provider: { "@id": BUSINESS_SCHEMA_ID },
+  areaServed: {
+    "@type": "City",
+    name: "Birigui",
+  },
+}));
+
 export const Services = () => {
   return (
     <section id="services" className="bg-primary/20 py-20 lg:py-28">
+      {SERVICES_SCHEMA.map((schema) => (
+        <JsonLd key={schema.serviceType} data={schema} />
+      ))}
       <div className="container">
         <SectionHeader
           align="center"
