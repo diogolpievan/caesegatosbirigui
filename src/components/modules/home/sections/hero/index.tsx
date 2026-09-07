@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { InstagramIcon, PawCircleIcon } from "@/assets/icons";
 import { INSTAGRAM_HREF, WHATSAPP_HREF } from "@/constants/contact";
@@ -5,13 +6,16 @@ import { Reveal, StaggerGroup, StaggerItem } from "@/motion";
 
 export const Hero = () => {
   return (
-    <section
-      id="home"
-      className="relative bg-cover bg-position-[center_25%] bg-no-repeat"
-      style={{
-        backgroundImage: "url('/images/caes-e-gatos-birigui-hero.png')",
-      }}
-    >
+    <section id="home" className="relative">
+      <Image
+        src="/images/caes-e-gatos-birigui-hero.png"
+        alt="Veterinária da Cães e Gatos Birigui segurando um cachorro no colo em consultório"
+        fill
+        priority
+        sizes="100vw"
+        className="-z-10 object-cover object-[center_25%]"
+      />
+
       <div className="container flex min-h-[93vh] flex-col justify-center pt-40 pb-32">
         <div className="max-w-150">
           <Reveal variant="fadeLeft" trigger="mount">
