@@ -34,6 +34,24 @@ npm run test:coverage
 
 A cada push/PR na `main`, o workflow `.github/workflows/ci.yml` instala as dependências, roda os testes e faz o build.
 
+## Docker
+
+A imagem usa multi-stage build e o `output: "standalone"` do Next, resultando em ~81 MB.
+
+```bash
+# build (opcionalmente: --build-arg NEXT_PUBLIC_SITE_URL=https://seu-dominio)
+docker build -t caesegatosbirigui:1.0 .
+
+# executar
+docker run -d --name caes-web -p 3000:3000 caesegatosbirigui:1.0
+
+# verificar
+curl -I http://localhost:3000
+docker ps
+```
+
+O container roda como usuário não-root (`node`) e expõe a porta 3000.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

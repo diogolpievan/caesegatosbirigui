@@ -1,0 +1,40 @@
+# Tudo aqui fica fora do build context: menos bytes enviados ao daemon,
+# builds mais rápidos e menos invalidação de cache por arquivo irrelevante.
+
+# Dependências e artefatos de build (reinstalados/regerados dentro da imagem)
+node_modules
+.next
+out
+build
+coverage
+*.tsbuildinfo
+
+# Histórico e CI
+.git
+.github
+.gitignore
+
+# Arquivos do próprio Docker (não fazem parte da aplicação)
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Testes e config de teste: não participam do build de produção
+src/test
+src/**/__tests__
+vitest.config.mts
+
+# Segredos e configuração local — nunca devem entrar na imagem
+.env
+.env.*
+!.env.local.example
+
+# Editor / ferramentas locais
+.vscode
+.idea
+.claude
+.DS_Store
+npm-debug.log*
+
+# Documentação
+README.md
