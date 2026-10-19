@@ -34,7 +34,7 @@ services:
       CI: "true"
     command: sh -c "npm ci && npm test"
     networks:
-      - frontend
+      - app
 
   # Smoke test ponta a ponta: só roda depois que web e proxy estão healthy.
   # Qualquer falha de curl/grep encerra com código != 0 e quebra o CI.
@@ -44,7 +44,7 @@ services:
       proxy:
         condition: service_healthy
     networks:
-      - frontend
+      - app
     entrypoint: ["sh", "-c"]
     command:
       - |

@@ -2,7 +2,8 @@
 # Stack de execução do site Cães e Gatos Birigui
 #
 #   navegador ──► proxy (Nginx, porta 8080) ──► web (Next.js, porta 3000)
-#                 rede "frontend"                rede "backend" (sem porta publicada)
+#                 publicado no host              sem porta publicada
+#                 (os dois na rede "app")
 #
 # Subir:   docker compose up -d --build
 # Status:  docker compose ps
@@ -32,7 +33,7 @@ services:
     # O HEALTHCHECK já vem definido no Dockerfile; o proxy espera ele ficar
     # "healthy" antes de subir (ver depends_on abaixo).
     networks:
-      - backend
+      - app
     # Limites para um serviço mal comportado não derrubar o host.
     deploy:
       resources:
@@ -68,10 +69,8 @@ services:
       timeout: 5s
       start_period: 5s
       retries: 3
-    # Único serviço nas duas redes: recebe do host e repassa para o backend.
     networks:
-      - frontend
-      - backend
+      - app
     logging:
       driver: json-file
       options:
@@ -79,12 +78,10 @@ services:
         max-file: "3"
 
 networks:
-  frontend:
-  # Rede só entre proxy e web. O web não publica porta nenhuma, então o host
+  # Rede própria da stack: os serviços se acham pelo nome ("web", "proxy")
+  # via DNS interno do Docker. O web não publica porta nenhuma, então o host
   # não o alcança diretamente: todo acesso passa pelo proxy.
-  # (Não usamos `internal: true` porque no Docker-in-Docker do Codespaces
-  # ela bloqueia até o tráfego entre os containers da própria rede.)
-  backend:
+  app:
 
 volumes:
   nginx-cache:
