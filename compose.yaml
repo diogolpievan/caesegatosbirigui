@@ -2,7 +2,7 @@
 # Stack de execução do site Cães e Gatos Birigui
 #
 #   navegador ──► proxy (Nginx, porta 8080) ──► web (Next.js, porta 3000)
-#                 rede "frontend"                rede "backend" (interna)
+#                 rede "frontend"                rede "backend" (sem porta publicada)
 #
 # Subir:   docker compose up -d --build
 # Status:  docker compose ps
@@ -80,10 +80,11 @@ services:
 
 networks:
   frontend:
-  # `internal: true` corta o acesso externo da rede: o container web não é
-  # alcançável pelo host nem sai para a internet (site estático não precisa).
+  # Rede só entre proxy e web. O web não publica porta nenhuma, então o host
+  # não o alcança diretamente: todo acesso passa pelo proxy.
+  # (Não usamos `internal: true` porque no Docker-in-Docker do Codespaces
+  # ela bloqueia até o tráfego entre os containers da própria rede.)
   backend:
-    internal: true
 
 volumes:
   nginx-cache:
