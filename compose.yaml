@@ -1,0 +1,89 @@
+# ============================================================================
+# Stack de execução do site Cães e Gatos Birigui
+#
+#   navegador ──► proxy (Nginx, porta 8080) ──► web (Next.js, porta 3000)
+#                 rede "frontend"                rede "backend" (interna)
+#
+# Subir:   docker compose up -d --build
+# Status:  docker compose ps
+# Derrubar: docker compose down          (adicione -v para apagar o cache)
+# ============================================================================
+
+name: caesegatos
+
+services:
+  # --------------------------------------------------------------------------
+  # web — a imagem multi-stage da atividade anterior (Dockerfile na raiz)
+  # --------------------------------------------------------------------------
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Inlinada no bundle em tempo de build; pode vir de um arquivo .env.
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://www.caesegatosbirigui.com.br}
+    image: caesegatos-web:latest
+    # Reinicia sozinho se o processo cair ou o Docker reiniciar, mas respeita
+    # um `docker compose stop` manual (diferente de `always`).
+    restart: unless-stopped
+    # Sem `ports`: o Next não fica exposto ao host, só o proxy fala com ele.
+    expose:
+      - "3000"
+    # O HEALTHCHECK já vem definido no Dockerfile; o proxy espera ele ficar
+    # "healthy" antes de subir (ver depends_on abaixo).
+    networks:
+      - backend
+    # Limites para um serviço mal comportado não derrubar o host.
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # --------------------------------------------------------------------------
+  # proxy — Nginx na frente do Next: cache, gzip e ponto único de entrada
+  # --------------------------------------------------------------------------
+  proxy:
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    ports:
+      - "${PROXY_PORT:-8080}:80"
+    volumes:
+      # Configuração versionada no repositório, montada somente leitura.
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      # Volume nomeado: o cache sobrevive a recriações do container.
+      - nginx-cache:/var/cache/nginx
+    depends_on:
+      web:
+        condition: service_healthy
+        restart: true
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--spider", "http://127.0.0.1/healthz"]
+      interval: 30s
+      timeout: 5s
+      start_period: 5s
+      retries: 3
+    # Único serviço nas duas redes: recebe do host e repassa para o backend.
+    networks:
+      - frontend
+      - backend
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  frontend:
+  # `internal: true` corta o acesso externo da rede: o container web não é
+  # alcançável pelo host nem sai para a internet (site estático não precisa).
+  backend:
+    internal: true
+
+volumes:
+  nginx-cache:

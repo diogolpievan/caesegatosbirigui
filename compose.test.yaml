@@ -1,0 +1,61 @@
+# ============================================================================
+# Compose de testes automáticos (usado no CI e também rodável no Codespaces)
+#
+# Reaproveita a stack de compose.yaml via `include` e adiciona dois serviços
+# de execução única:
+#
+#   unit-tests -> roda o Vitest dentro de um container Node
+#   smoke      -> sobe web + proxy de verdade e faz requisições HTTP
+#
+# Uso:
+#   docker compose -f compose.test.yaml build
+#   docker compose -f compose.test.yaml run --rm unit-tests
+#   docker compose -f compose.test.yaml run --rm smoke
+#   docker compose -f compose.test.yaml down -v
+# ============================================================================
+
+name: caesegatos-test
+
+include:
+  - compose.yaml
+
+services:
+  # Testes unitários. Usa o código montado do repositório (os testes ficam de
+  # fora da imagem de produção pelo .dockerignore, de propósito).
+  unit-tests:
+    image: node:24-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      # Volume anônimo: o node_modules do container não sobrescreve nem
+      # suja a pasta do host.
+      - /app/node_modules
+    environment:
+      CI: "true"
+    command: sh -c "npm ci && npm test"
+    networks:
+      - frontend
+
+  # Smoke test ponta a ponta: só roda depois que web e proxy estão healthy.
+  # Qualquer falha de curl/grep encerra com código != 0 e quebra o CI.
+  smoke:
+    image: curlimages/curl:latest
+    depends_on:
+      proxy:
+        condition: service_healthy
+    networks:
+      - frontend
+    entrypoint: ["sh", "-c"]
+    command:
+      - |
+        set -e
+        echo "-> /healthz do proxy"
+        curl -fsS http://proxy/healthz
+        echo "-> página inicial responde 200 e tem o conteúdo esperado"
+        curl -fsS http://proxy/ | grep -q "Dermatologia"
+        echo "-> robots.txt e sitemap.xml"
+        curl -fsS -o /dev/null http://proxy/robots.txt
+        curl -fsS -o /dev/null http://proxy/sitemap.xml
+        echo "-> cabeçalho de cache do Nginx presente"
+        curl -fsSI http://proxy/ | grep -qi "x-cache-status"
+        echo "SMOKE TEST OK"

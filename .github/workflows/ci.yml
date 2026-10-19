@@ -33,3 +33,28 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  compose:
+    name: Docker Compose (unit + smoke)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Build images
+        run: docker compose -f compose.test.yaml build
+
+      - name: Unit tests in container
+        run: docker compose -f compose.test.yaml run --rm unit-tests
+
+      - name: Smoke test (web + proxy)
+        run: docker compose -f compose.test.yaml run --rm smoke
+
+      - name: Show logs on failure
+        if: failure()
+        run: docker compose -f compose.test.yaml logs
+
+      - name: Tear down
+        if: always()
+        run: docker compose -f compose.test.yaml down -v
