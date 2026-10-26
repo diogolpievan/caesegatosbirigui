@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: caesegatos-web-service
+spec:
+  type: NodePort
+  # Precisa bater com os labels dos Pods do deployment.yaml.
+  selector:
+    app: caesegatos-web
+  ports:
+    # Porta 80 no Service, encaminhada para a porta 3000 do Next.js.
+    - port: 80
+      targetPort: 3000
+      nodePort: 30080

@@ -20,6 +20,7 @@ Dockerfile
 docker-compose*.yml
 compose*.yaml
 nginx
+k8s
 
 # Testes e config de teste: não participam do build de produção
 src/test

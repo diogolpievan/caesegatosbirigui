@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caesegatos-web
+  labels:
+    app: caesegatos-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: caesegatos-web
+  # Rolling update sem indisponibilidade: sobe 1 Pod novo por vez e só
+  # derruba um antigo depois que o novo estiver pronto (readinessProbe).
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: caesegatos-web
+    spec:
+      containers:
+        - name: caesegatos-web
+          # Imagem construída a partir do Dockerfile do projeto, direto no
+          # Docker do Minikube (eval $(minikube docker-env) + docker build).
+          image: caesegatos-web:v1
+          # Usa a imagem local se já existir, sem tentar baixar do Docker Hub.
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          # Só recebe tráfego do Service quando o Next responder.
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          # Reinicia o container se ele parar de responder.
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          # A imagem já roda como o usuário "node" (uid 1000), não como root.
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
